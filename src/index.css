@@ -1,0 +1,22 @@
+header{
+  padding: 1em;
+  background-color: #404849;
+  color:#ffffff;
+}
+  .title{
+    max-width: 80%;
+    width: fit-content;
+    margin: 0 auto 0 auto;
+    font-size: xxx-large;
+  }
+  .by{
+    width: fit-content;
+    text-align: right;
+    margin: 0 1em 0 auto;
+    font-size: x-large;
+  }
+main{
+  text-align: center;
+  width: 100%;
+  margin: 0 auto 0 auto;
+}
