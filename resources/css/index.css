@@ -20,3 +20,14 @@ main{
   width: 100%;
   margin: 0 auto 0 auto;
 }
+footer{
+  max-width: 80%;
+  margin: auto 10% auto 10%;
+  padding: 1em;
+  border: solid 2px #cccccc;
+  border-radius: 1em;
+  border-collapse: initial;
+}
+  h5.author{
+    margin: auto auto 0 auto;
+  }

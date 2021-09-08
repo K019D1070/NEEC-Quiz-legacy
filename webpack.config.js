@@ -5,7 +5,7 @@ module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: { // 出力に関して
     filename: 'bundle.js', // 出力するファイル名
-    path: path.join(__dirname, "doc") // 出力するディレクトリ階層
+    path: path.join(__dirname, "docs") // 出力するディレクトリ階層
     // pathは絶対パスで指定、そのため __dirname でディレクトリ階層を取得しています
   },
   module: {
@@ -40,6 +40,14 @@ module.exports = {
             options: { url: false }
           }
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: "url-loader",
+        options: {
+          limit: 2048,
+          name: "./images/[name].[ext]"
+        }
       }
     ]
   }

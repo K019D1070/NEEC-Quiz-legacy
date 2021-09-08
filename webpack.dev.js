@@ -6,7 +6,7 @@ module.exports = merge.merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    static: path.join(__dirname, "doc"),
+    static: path.join(__dirname, "docs"),
     allowedHosts: ["0.0.0.0"]
   },
 });
