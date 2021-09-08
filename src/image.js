@@ -1,7 +1,11 @@
-export default class image{
-  imagen(path){
-    let image = document.createElement("img");
+export default class{
+  static imagen(path){
+    let image = new Image();
     image.src=path;
-    return image;
+    return new Promise((loaded, reject)=>{
+      image.addEventListener("load", ()=>{
+        loaded(image);
+      })
+    });
   }
 }
