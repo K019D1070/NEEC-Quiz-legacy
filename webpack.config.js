@@ -1,12 +1,14 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: path.join(__dirname, "src", "index.js"),
   output: { // 出力に関して
     filename: 'bundle.js', // 出力するファイル名
-    path: path.join(__dirname, "docs") // 出力するディレクトリ階層
+    path: path.join(__dirname, "docs"), // 出力するディレクトリ階層
     // pathは絶対パスで指定、そのため __dirname でディレクトリ階層を取得しています
+    assetModuleFilename: "resource/[name][ext]"
   },
   module: {
     rules: [
@@ -37,17 +39,22 @@ module.exports = {
           "style-loader",
           {
             loader: "css-loader",
-            options: { url: false }
+            options: { url: true }
           }
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg|ico)$/i,
-        loader: "url-loader",
-        options: {
-          limit: 2048,
-          name: "./images/[name].[ext]"
-        }
+        test: /\.(jpe?g|png|gif|svg|webp|ico)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024,  // <--- 4kb
+          },
+        },
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       },
       {
         test: /\.jsx?$/,
@@ -59,5 +66,10 @@ module.exports = {
         },
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./resources/html/index.html"
+    })
+  ]
 };

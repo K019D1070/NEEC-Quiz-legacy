@@ -28,6 +28,6 @@ footer{
   border-radius: 1em;
   border-collapse: initial;
 }
-  h5.author{
-    margin: auto auto 0 auto;
+  .author{
+    font-weight: bolder;
   }
