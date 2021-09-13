@@ -6,6 +6,7 @@ export default class Language{
     window.navigator.userLanguage ||
     window.navigator.browserLanguage
   ];
+  locale = "en";
   localLang = lang.en;
   onCahnge = ()=>{};
   constructor(){
@@ -15,6 +16,7 @@ export default class Language{
     this.languages.find(element => {
       if(Object.keys(lang).includes(element)){
         this.change(element);
+        this.locale = element;
         return element;
       }
     });
@@ -28,5 +30,11 @@ export default class Language{
   switch(){
     document.getElementsByTagName("title")[0].innerHTML = `${this.localLang.title} | ${this.localLang.by}`;
     document.getElementById("lang").textContent = this.localLang.lang;
+  }
+  setOnChange(f){
+    this.onCahnge=f;
+  }
+  getLang(){
+    return this.locale;
   }
 }
