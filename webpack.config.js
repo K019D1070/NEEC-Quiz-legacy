@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -8,7 +9,7 @@ module.exports = {
     filename: 'bundle.js', // 出力するファイル名
     path: path.join(__dirname, "docs"), // 出力するディレクトリ階層
     // pathは絶対パスで指定、そのため __dirname でディレクトリ階層を取得しています
-    assetModuleFilename: "resource/[name][ext]"
+    assetModuleFilename: path.join("resources", "[name][ext]")
   },
   module: {
     rules: [
@@ -70,6 +71,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./resources/html/index.html"
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: path.join('ServiceWorker.js')
     })
   ]
 };
