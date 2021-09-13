@@ -1,23 +1,10 @@
 import loading from "./loading";
+import Language from "./language";
 
-import lang from '../resources/data/lang.json';
 import "../resources/css/index.css";
 
 loading.init();
-const languages = window.navigator.languages || [
-  window.navigator.language ||
-  window.navigator.userLanguage ||
-  window.navigator.browserLanguage
-];
-
-let localLang = lang.en;
-languages.find(element => {
-  if(Object.keys(lang).includes(element)){
-    localLang = lang[element];
-    return element;
-  }
-});
-document.getElementsByTagName("title")[0].innerHTML = `${localLang.title} | ${localLang.by}`;
+const lang = new Language();
 
 if("serviceWorker" in navigator){
   /* 実装中

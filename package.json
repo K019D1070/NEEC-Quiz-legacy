@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "init": "npm ci",
     "debug": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.config.js"
   },
